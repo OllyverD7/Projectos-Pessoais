@@ -7,8 +7,6 @@ public class funcional {
         Cliente cli = new Cliente("jkldjklddds jjkl", "kjkjklsjkl23425", 2000, "jkdf@gmail.com", 30000);
         Menu menu = new Menu();
 
-        System.out.println(ad.getNome());
-
         do {
 
             ad.Verif_ADM();

@@ -1,5 +1,7 @@
 package S_Vendas;
 
+import java.io.IOException;
+
 public class Pessoa {
     private String nome;
     private String senha;
