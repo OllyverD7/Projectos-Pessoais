@@ -1,6 +1,7 @@
 package S_Vendas;
 
 import java.util.ArrayList;
+import java.util.InputMismatchException;
 import java.util.List;
 
 public class ADM extends Pessoa{
@@ -68,7 +69,12 @@ public class ADM extends Pessoa{
 
         do {
             System.out.print("Ano Nascimento: ");
-            setAnoNascimento(menu.in.nextInt());
+            try {
+                setAnoNascimento(menu.in.nextInt());
+            }catch (InputMismatchException erroIn){
+                erroIn.getStackTrace();
+                repe = 1;
+            }
         } while (repe == 1);
 
         do {
