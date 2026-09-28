@@ -64,7 +64,7 @@ public class Pessoa {
             repe = 1;
 
         } else if (!nome.matches("[\\p{L} ]+")) {
-            System.out.println("Nome não pode conter caracteres especiais e numeros.");
+            System.out.println("Nome não pode conter caracteres especiais ou numeros.");
             repe = 1;
 
         }else {

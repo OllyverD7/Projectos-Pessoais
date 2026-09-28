@@ -1,5 +1,7 @@
 package S_Vendas;
 
+import java.util.InputMismatchException;
+
 public class Login {
     Pessoa pessoa  = new Pessoa("oli", "jka1sdsfsdfdfsd", 2000, "Oli@gmail.com");
     Cliente cli = new Cliente("jkldjklddds jjkl", "kjkjklsjkl23425", 2000, "jkdf@gmail.com", 30000);
@@ -146,7 +148,12 @@ public class Login {
             do {
                 achado = null;
                 System.out.print("ID> ");
-                id_digitado = menu.in.nextInt();
+                try {
+                    id_digitado = menu.in.nextInt();
+                }catch (InputMismatchException erroIn){
+                    erroIn.getStackTrace();
+                    menu.in.next();
+                }
 
                 for (Cliente cl : Cliente.getCliente()){
                     if (id_digitado == cl.getID_Cliente()){
@@ -226,7 +233,12 @@ public class Login {
         do {
             achado = null;
             System.out.print("ID> ");
-            id_digitado = menu.in.nextInt();
+            try {
+                id_digitado = menu.in.nextInt();
+            }catch (InputMismatchException erroIn){
+                erroIn.getStackTrace();
+                menu.in.next();
+            }
 
             for (ADM adm : ADM.getAdm()){
                 if (adm.getID_ADM() == id_digitado){

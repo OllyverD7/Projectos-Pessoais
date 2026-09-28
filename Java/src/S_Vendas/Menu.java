@@ -14,8 +14,13 @@ public class Menu {
             System.out.println("1 - Sim");
             System.out.println("2 - Não");
             System.out.print("[R]: ");
-            escolha = in.nextInt();
-            System.out.println();
+            try {
+                escolha = in.nextInt();
+                System.out.println();
+            }catch (InputMismatchException erroIn){
+                erroIn.getStackTrace();
+                in.next();
+            }
             if (escolha < 1 || escolha > 2) {
                 System.out.println("Por favor, digite um número válido!");
             }
@@ -28,8 +33,13 @@ public class Menu {
             System.out.println("1 - Sim");
             System.out.println("2 - Não");
             System.out.print("[R]: ");
-            escolha = in.nextInt();
-            System.out.println();
+            try {
+                escolha = in.nextInt();
+                System.out.println();
+            }catch (InputMismatchException erroIn){
+                erroIn.getStackTrace();
+                in.next();
+            }
             if (escolha < 1 || escolha > 2)
                 System.out.println("Por favor, digite um número válido!");
         }while(escolha < 1 || escolha > 2);
@@ -43,11 +53,11 @@ public class Menu {
             System.out.print("[R]: ");
             try {
                 escolha = in.nextInt();
+                System.out.println();
             }catch (InputMismatchException erroIn){
                 erroIn.getStackTrace();
                 in.next();
             }
-            System.out.println();
             if (escolha < 1 || escolha > 2){
                 System.out.println("Por favor, digite um valor válido!");
             }
@@ -62,11 +72,11 @@ public class Menu {
             System.out.print("[R]: ");
             try {
                 escolha = in.nextInt();
+                System.out.println();
             }catch (InputMismatchException erroIn){
                 erroIn.getStackTrace();
                 in.next();
             }
-            System.out.println();
             if (escolha < 1 || escolha > 2){
                 System.out.println("Por favor, digite um número válido!!");
             }
@@ -83,11 +93,11 @@ public class Menu {
             System.out.print("[R]: ");
             try {
                 escolha = in.nextInt();
+                System.out.println();
             }catch (InputMismatchException erroIn){
                 erroIn.getStackTrace();
                 in.next();
             }
-            System.out.println();
             if (escolha < 1 || escolha > 2){
                 System.out.println("Por favor, digite um número válido!!");
             }
@@ -105,11 +115,11 @@ public class Menu {
             System.out.print("[R]: ");
             try {
                 escolha = in.nextInt();
+                System.out.println();
             }catch (InputMismatchException erroIn){
                 erroIn.getStackTrace();
                 in.next();
             }
-            System.out.println();
             if (escolha < 1 || escolha > 3) {
                 System.out.println("Por favor, digite um valor válido!");
             }

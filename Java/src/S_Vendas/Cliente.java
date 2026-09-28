@@ -1,6 +1,7 @@
 package S_Vendas;
 
 import java.util.ArrayList;
+import java.util.InputMismatchException;
 import java.util.List;
 
 public class Cliente extends Pessoa{
@@ -121,10 +122,17 @@ public class Cliente extends Pessoa{
             setSenha(menu.in.next());
         }while (repe == 1);
 
+
         do {
             System.out.print("Ano Nascimento: ");
-            setAnoNascimento(menu.in.nextInt());
-        }while (repe == 1);
+            try {
+                setAnoNascimento(menu.in.nextInt());
+            }catch (InputMismatchException erroIn){
+                erroIn.getStackTrace();
+                menu.in.next();
+                repe = 1;
+            }
+        } while (repe == 1);
 
         do {
             System.out.print("Email: ");
@@ -133,7 +141,13 @@ public class Cliente extends Pessoa{
 
         do {
             System.out.print("Saldo inicial: ");
-            setSaldo(menu.in.nextDouble());
+            try {
+                setSaldo(menu.in.nextDouble());
+            }catch (InputMismatchException erroIn){
+                erroIn.getStackTrace();
+                menu.in.next();
+                repe = 1;
+            }
         }while (repe == 1);
     }
 
@@ -166,7 +180,13 @@ public class Cliente extends Pessoa{
         do {
             System.out.println("Quanto deseja aumentar?");
             System.out.print("[R]: ");
-            setAdic_saldo(menu.in.nextDouble());
+            try {
+                setAdic_saldo(menu.in.nextDouble());
+            }catch (InputMismatchException erroIn){
+                erroIn.getStackTrace();
+                menu.in.next();
+                repe = 1;
+            }
         }while(repe == 1);
 
         setSaldo(getSaldo() + getAdic_saldo());

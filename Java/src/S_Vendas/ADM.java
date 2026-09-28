@@ -72,7 +72,9 @@ public class ADM extends Pessoa{
             try {
                 setAnoNascimento(menu.in.nextInt());
             }catch (InputMismatchException erroIn){
+                System.out.println("Por favor, digite um valor válido para data!");
                 erroIn.getStackTrace();
+                menu.in.next();
                 repe = 1;
             }
         } while (repe == 1);
@@ -106,7 +108,12 @@ public class ADM extends Pessoa{
         do {
             do {
                 System.out.print("ID> ");
-                id_digitado = menu.in.nextInt();
+                try {
+                    id_digitado = menu.in.nextInt();
+                }catch (InputMismatchException erroIn){
+                    erroIn.getStackTrace();
+                    menu.in.next();
+                }
             } while (repe == 1);
 
             for (ADM ad : ADM.getAdm()) {
@@ -135,7 +142,12 @@ public class ADM extends Pessoa{
 
         do {
             System.out.print("ID> ");
-            id_digitado = menu.in.nextInt();
+            try {
+                id_digitado = menu.in.nextInt();
+            }catch (InputMismatchException erroIn){
+                erroIn.getStackTrace();
+                menu.in.next();
+            }
         } while (repe == 1);
 
         for (ADM ad : ADM.getAdm()) {
@@ -180,7 +192,12 @@ public class ADM extends Pessoa{
         System.out.println("Por favor, digite o ID do Adminstrador que deseja editar.");
 
         System.out.print("ID> ");
-        id_digitado = menu.in.nextInt();
+        try {
+            id_digitado = menu.in.nextInt();
+        }catch (InputMismatchException erroIn){
+            erroIn.getStackTrace();
+            menu.in.next();
+        }
 
         for (ADM ad : ADM.getAdm()) {
             if (ad.getID_ADM() == id_digitado) {
@@ -224,7 +241,12 @@ public class ADM extends Pessoa{
             System.out.println("------------------------- BLOQUEAR/DESBLOQUEAR ---------------------------");
             System.out.println("Por favor, digite o ID do clinte.");
             System.out.print("ID> ");
-            id_digitado = menu.in.nextInt();
+            try {
+                id_digitado = menu.in.nextInt();
+            }catch (InputMismatchException erroIn){
+                erroIn.getStackTrace();
+                menu.in.next();
+            }
 
             for (Cliente cl : Cliente.getCliente()) {
                 if (cl.getID_Cliente() == id_digitado) {
@@ -266,7 +288,12 @@ public class ADM extends Pessoa{
 
             System.out.println("Por favor, digite o ID do clinte.");
             System.out.print("ID> ");
-            id_digitado = menu.in.nextInt();
+            try {
+                id_digitado = menu.in.nextInt();
+            }catch (InputMismatchException erroIn){
+                erroIn.getStackTrace();
+                menu.in.next();
+            }
 
             for (Cliente cl : Cliente.getCliente()) {
                 if (cl.getID_Cliente() == id_digitado) {
