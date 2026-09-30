@@ -129,7 +129,6 @@ public class Menu {
 
     //-------------------------------- MENUS ADM --------------------------------
     public void Menu_ADM_Escolha(){
-        System.out.println("----------------- BEM-VINDO ADMINISTRADOR --------------------");
         do {
             System.out.println("1 - Menu Produtos");
             System.out.println("2 - Menu ADM");
@@ -213,11 +212,11 @@ public class Menu {
             try {
                 escolha = in.nextInt();
             }catch (InputMismatchException erroIn){
-                erroIn.getStackTrace();
+                System.out.println("Por favor, digite um valor válido!");
+                escolha = 0;
                 in.next();
             }
             System.out.println();
-
             if (escolha < 1 || escolha > 3)
                 System.out.println("Por favor, digite um valor válido!");
         }while (escolha < 1 || escolha > 3);

@@ -65,12 +65,13 @@ public class Cliente extends Pessoa{
         }
     }
 
-    public void setAdic_saldo(double adic_saldo) {
+    public void setAdic_saldo(double adic_saldo){
         if (adic_saldo <= 0){
             System.out.println("Saldo de acréscimo deve ser maior que zero!");
             repe = 1;
         }else {
             this.adic_saldo = adic_saldo;
+            repe = 3;
         }
     }
 
@@ -128,6 +129,7 @@ public class Cliente extends Pessoa{
             try {
                 setAnoNascimento(menu.in.nextInt());
             }catch (InputMismatchException erroIn){
+                System.out.println("Por favor, digite um valor válido!");
                 erroIn.getStackTrace();
                 menu.in.next();
                 repe = 1;
@@ -144,9 +146,8 @@ public class Cliente extends Pessoa{
             try {
                 setSaldo(menu.in.nextDouble());
             }catch (InputMismatchException erroIn){
-                erroIn.getStackTrace();
+                System.out.println("Por favor, digite um número válido!");
                 menu.in.next();
-                repe = 1;
             }
         }while (repe == 1);
     }
@@ -177,17 +178,18 @@ public class Cliente extends Pessoa{
     }
 
     public void P_Saldo(){
+
         do {
             System.out.println("Quanto deseja aumentar?");
             System.out.print("[R]: ");
             try {
                 setAdic_saldo(menu.in.nextDouble());
-            }catch (InputMismatchException erroIn){
-                erroIn.getStackTrace();
+            }catch (InputMismatchException e){
+                System.out.println("Por favor, digite um valor válido!\n");
                 menu.in.next();
                 repe = 1;
             }
-        }while(repe == 1);
+        }while (repe == 1);
 
         setSaldo(getSaldo() + getAdic_saldo());
         System.out.println("Saldo aumentou +" + getAdic_saldo() + "kz");

@@ -125,7 +125,7 @@ public class Login {
         }
     }
 
-
+//-------------------------------------------- CLIENTE -------------------------------------------------------------------------
 
     public void Login_Cliente(){
         cli.Verif_Cliente();
@@ -141,79 +141,74 @@ public class Login {
                 System.out.println("Por favor, digite um número válido!");
             }
 
-        }else {
-
+        } else {
             Cliente achado;
             System.out.println("------------------- CLIENTE LOGIN -------------------");
+
             do {
                 achado = null;
                 System.out.print("ID> ");
                 try {
                     id_digitado = menu.in.nextInt();
                 }catch (InputMismatchException erroIn){
-                    erroIn.getStackTrace();
+                    System.out.println("Por favor, digite um número válido!");
                     menu.in.next();
                 }
 
-                for (Cliente cl : Cliente.getCliente()){
-                    if (id_digitado == cl.getID_Cliente()){
-                        achado = cl;
+
+                for (Cliente cliente : Cliente.getCliente()){
+                    if (cliente.getID_Cliente() == id_digitado){
+                        achado = cliente;
                         break;
                     }
                 }
-
                 if (achado == null){
-                    System.out.println("Identificador não associado à nenhuma conta!");
+                    System.out.println("Identificador não está associado à nenhuma conta!");
+                } else if (achado.getEstado() == 1) {
+                    System.out.println("Conta bloqueada temporáriamente");
+                }
 
-                } else if (achado.getEstado() == 1){
-                    System.out.println("Conta bloqueada temporariamente, por favor, tente mais tarde.");
-                    //System.out.println("Tempo restante: " + achado.getTempo_restante());
-                    break;
-                }else {
-
-                    do {
-                        System.out.print("Senha> ");
-                        senha_Digitada = menu.in.next();
-                    } while (pessoa.repe == 1);
+                if (achado != null){
+                    System.out.print("Senha> ");
+                    senha_Digitada = menu.in.next();
 
                     if (achado.getSenha().equals(senha_Digitada)){
-                        if (achado.getTempo_restante() >= achado.getTempo_Bloqueado()){
-                            System.out.println("Login feito com sucesso!");
-                            tentativas = -1;
-                            do {
-                                System.out.println("-------------------------- BEM-VINDO " + achado.getNome() +" -------------------------------");
+                        tentativas = -1;
+                        System.out.println("Login feito com sucesso!");
+
+                        do {
+                            System.out.println("-------------------------- BEM-VINDO " + achado.getNome() + " -------------------------------");
+                            System.out.println("Saldo actual: " + achado.getSaldo() + "kz");
+                            menu.Menu_Cliente_Logado();
+                            if (menu.escolha == 1) {
+                                System.out.println("Aqui vai ver os produtos...");
+                                cli.repe = 3;
+
+                            } else if (menu.escolha == 2) {
+                                achado.Infor_Cliente();
+                                cli.repe = 3;
+
+                            } else if (menu.escolha == 3) {
                                 System.out.println("Saldo actual: " + achado.getSaldo());
-                                menu.Menu_Cliente_Logado();
-                                if (menu.escolha == 1) {
-                                    System.out.println("Aqui vai ver os produtos...");
-                                    cli.repe = 3;
+                                achado.P_Saldo();
+                                cli.repe = 3;
 
-                                }else if (menu.escolha == 2){
-                                    achado.Infor_Cliente();
-                                    cli.repe = 3;
+                            } else if (menu.escolha == 4) {
+                                cli.repe = 2;
 
-                                } else if (menu.escolha == 3) {
-                                    System.out.println("Saldo actual: " + achado.getSaldo());
-                                    achado.P_Saldo();
+                            } else {
+                                System.out.println("Por favor, digite um valor válido");
+                                cli.repe = 3;
+                            }
+                        } while (cli.repe == 3);
 
-                                }else if (menu.escolha == 4){
-                                    cli.repe = 2;
-
-                                }else {
-                                    System.out.println("Por favor, digite um valor válido");
-                                    cli.repe = 3;
-                                }
-                            }while (cli.repe == 3);
-
-                        }
                     }else {
                         tentativas--;
-                        System.out.println("ID ou Senha inválida!\n");
+                        System.out.println("Senha inválida!\n");
                         System.out.println("tentativas: " + tentativas);
 
                         if (tentativas == 0) {
                             achado.setEstado(1);
-                            achado.setInicio_do_bloqueio(System.currentTimeMillis());
                             System.out.println("Conta bloqueada!");
                         }
                     }
@@ -224,6 +219,7 @@ public class Login {
         }
     }
 
+    //------------------------------------ ADMINISTRADOR ------------------------------------
 
     public void Login_ADM(){
         ADM achado;
@@ -236,6 +232,7 @@ public class Login {
             try {
                 id_digitado = menu.in.nextInt();
             }catch (InputMismatchException erroIn){
+                System.out.println("Por favor, digite um número válido!");
                 erroIn.getStackTrace();
                 menu.in.next();
             }
@@ -248,11 +245,9 @@ public class Login {
             }
 
             if (achado == null){
-                System.out.println("Administrador não identificado!");
-
+                    System.out.println("Administrador não identificado!");
             }else if (achado.getEstado() == 1){
                 System.out.println("Conta bloqueada temporariamente, por favor, tente mais tarde.");
-
             }else {
                 do {
                     System.out.print("Senha> ");
@@ -260,7 +255,7 @@ public class Login {
                 }while (pessoa.repe == 1);
 
                 if (achado.getSenha().equals(senha_Digitada)){
-                    System.out.println("Login feito com sucesso!");
+                    System.out.println("Login feito com sucesso!\n");
                     System.out.println("-------------- Seja bem-vindo(a) " + achado.getNome() + " ---------------------------");
                     menu.Menu_ADM_Escolha();
                     if (menu.escolha == 4) {
@@ -270,7 +265,7 @@ public class Login {
                 }else {
                     tentativas--;
                     System.out.println("ID ou senha inválidas!");
-                    System.out.println("tentativas: " + tentativas);
+                    System.out.println("tentativas: " + tentativas + "\n");
                     if (tentativas == 0) {
                         achado.setEstado(1);
                         System.out.println("Conta bloqueada! Por favor, tente mais tarde.");
@@ -278,6 +273,5 @@ public class Login {
                 }
             }
         }while (tentativas > 0);
-
     }
 }

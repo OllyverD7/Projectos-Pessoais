@@ -182,7 +182,6 @@ public class ADM extends Pessoa{
         } else {
             for (ADM ad : ADM.getAdm()) {
                 ad.Apresentar_ADM();
-                System.out.println("---------------------------------------------------\n");
             }
         }
     }
