@@ -1,0 +1,56 @@
+*{
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+    font-family: arial, Helvetica, sans-serif;
+}
+body{
+   background: #030017;
+background: linear-gradient(90deg, rgba(3, 0, 23, 1) 0%, rgba(0, 0, 20, 1) 78%, rgba(0, 0, 3, 1) 100%);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+}
+.linha_externa, .cartao{
+    border-radius: 8px;
+}
+.linha_externa{
+    border: 2px solid rgba(3, 0, 23, 1);
+    padding: 30px;
+}
+.cartao{
+    background-color: #030017;
+    padding: 15px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
+}
+.descricao{
+    margin-top: 10px;
+    color: white;
+    padding: 20px;
+}
+.descricao h1{
+    font-size: 30px;
+    font-weight: bold;
+}
+.person img{
+    width: 100px;
+    height: 100px;
+    border-radius: 50%;
+    object-fit: cover;
+    
+}
+.redes_sociais{
+    cursor: pointer;
+    display: flex;  
+    justify-content: space-around;
+}
+.linkedin, .discord, .youtube, .twitter{
+    padding: 10px;
+    border: 2px solid red;
+    border-radius: 50%;
+    color: white;
+}
+
+
+
