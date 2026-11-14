@@ -14,7 +14,8 @@ public class Pessoa {
     private int dia_nascimento;
     private String telefone;
     private String email;
-    private int estado;
+    private int escolha_estado;
+    private String estado;
     private int estadoEntrada;
     InputMismatchException e = new  InputMismatchException();
     int repe = 0;
@@ -37,9 +38,14 @@ public class Pessoa {
     public String getEmail() {
         return email;
     }
-    public int getEstado() {
+    public String getEstado() {
         return estado;
     }
+
+    public int getEscolha_estado() {
+        return escolha_estado;
+    }
+
     public int getEstadoEntrada() {
         return estadoEntrada;
     }
@@ -129,13 +135,14 @@ public class Pessoa {
         }
     }
 
-    public void setEstado(int estado) {
-        if (estado == 1){
-            this.estado = estado;
+    public void setEscolha_estado(int escolha_estado) {
+        if (escolha_estado == 1){
+            this.estado = "Bloqueado";
         }else {
-            this.estado = estado;
+            this.estado = "Desbloqueado";
         }
     }
+
 
     public void setEstadoEntrada(int estadoEntrada) {
         if (estadoEntrada == 1){
@@ -156,7 +163,7 @@ public class Pessoa {
     }
 
     public void VerificarEstado() {
-        if (this.estado == 1) {
+        if (this.escolha_estado == 1) {
             System.out.println("A pessoa está ativa.");
         } else {
             System.out.println("A pessoa está inativa.");
